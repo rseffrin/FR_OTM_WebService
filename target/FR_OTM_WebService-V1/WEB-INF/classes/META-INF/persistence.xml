@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+			 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+			 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence 
+			 http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+
+    <persistence-unit name="fric" transaction-type="RESOURCE_LOCAL" >
+        <provider>org.hibernate.ejb.HibernatePersistence</provider> 
+		<jta-data-source>java:comp/env/jdbc/OracleFRAuditDEVEBS</jta-data-source>
+    	 
+        <properties>
+
+        
+            <!-- Driver JDBC para conexão com o MySQL -->
+          <!--  <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver" />
+
+             Propriedades para conexão com o banco de dados 
+            <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=littlesister.frimesa.local)(PORT=1571))(CONNECT_DATA=(SERVICE_NAME=DEVEBS)(INSTANCE_NAME=DEVEBS)))"/>
+	        <property name="javax.persistence.jdbc.user" value="apps"/>
+	        <property name="javax.persistence.jdbc.password" value="margaery2018tyrell"/>-->
+
+	        <!-- Configurações do Hibernate  -->
+	        <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle12cDialect"/>
+	        <property name="hibernate.show_sql" value="false"/>
+	        <property name="hibernate.format_sql" value="false"/>
+	        <!-- Atualiza o banco de dados, criando as tabelas caso necessário -->
+
+	        
+	        <!-- Sobre o hibernate.hbm2ddl.auto:
+	             validate: validar o schema, não faz mudanças no banco de dados. 
+				 update: faz update o schema.
+				 create: cria o schema, destruindo dados anteriores.
+				 create-drop: drop o schema quando ao terminar a sessão. 
+				 select * from v$version versão do banco oracle -->
+	        
+        </properties>
+    </persistence-unit>
+</persistence>

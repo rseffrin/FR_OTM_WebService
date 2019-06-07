@@ -1,0 +1,16 @@
+br\com\frimesa\ws\exceptions\DAOException.class
+br\com\frimesa\ws\dao\GenericDAOImpl.class
+br\com\frimesa\ws\util\Teste.class
+br\com\frimesa\ws\dao\IGenericDAO.class
+br\com\frimesa\ws\exceptions\ErrorCode.class
+br\com\frimesa\ws\exceptions\mapper\WebIllegalStateExceptionMapper.class
+br\com\frimesa\ws\dao\DBConnection.class
+br\com\frimesa\ws\dao\otm\FrOTMDAOImpl.class
+br\com\frimesa\ws\exceptions\mapper\DAOExceptionMapper.class
+br\com\frimesa\ws\otm\service\OTMService.class
+br\com\frimesa\ws\util\Util.class
+br\com\frimesa\ws\dao\DAOFactory.class
+br\com\frimesa\ws\dao\otm\FrOTMDAO.class
+br\com\frimesa\ws\exceptions\mapper\WebAPIExceptionMapper.class
+br\com\frimesa\ws\otm\resource\OTMResource.class
+br\com\frimesa\ws\model\ErrorMessage.class

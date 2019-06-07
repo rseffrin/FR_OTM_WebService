@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://xmlns.oracle.com/apps/otm" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/apps/otm" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:annotation>
+    <xsd:documentation>Release 6.3 Schema.  Last modified Nov 05, 2013.
+Refer to the XML Interface Changes document for details on the changes</xsd:documentation>
+  </xsd:annotation>
+  <xsd:element name="TransmissionAck">
+    <xsd:annotation>
+      <xsd:documentation>When GLog receives a Transmission, it replies with a TransmissionAck element, but only if an AckSpec is specified in the
+TransmissionHeader.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="EchoedTransmissionHeader" />
+        <xsd:element minOccurs="0" ref="TransmissionAckStatus" />
+        <xsd:element minOccurs="0" ref="TransmissionAckReason" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="EchoedTransmissionHeader">
+    <xsd:annotation>
+      <xsd:documentation>An EchoedTransmissionHeader contains a copy of the TransmissionHeader that GLog received, but with the
+ReferenceTransmissionNo set to the transmission number that GLog assigned to the transmission.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="TransmissionHeader" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  
+   <xsd:element name="TransmissionHeader">
+    <xsd:annotation>
+      <xsd:documentation>TransmissionHeader contains header level information for a Transmission, such as UserName and Password.
+The UserName and Password corresponds to that used to log into GLog over the web.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" ref="SenderTransmissionNo" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>   
+  
+  <xsd:element name="TransmissionAckStatus" type="xsd:string">
+    <xsd:annotation>
+      <xsd:documentation>Specifies if the Transmission was successfully STAGED or REJECTED.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="TransmissionAckReason" type="xsd:string">
+    <xsd:annotation>
+      <xsd:documentation>Specifies a reson for the Transmission Ack.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>   
+  
+  <xsd:element name="SenderTransmissionNo" type="xsd:string">
+    <xsd:annotation>
+      <xsd:documentation>SenderTransmissionNo: The sender's transmission number.
+This should be specified in the transmission header so that when GLog returns a transmission
+acknowlegement, it will indicate which transmission is being acknowledged.
+DataType: A200
+
+As of the February 4.0 patch, the element was stored in the sender_transmission_no (if it could be converted
+to a numeric value) and sender_transmission_id (alphanumeric value) fields in the database.  As of Release 4.5,
+the field is only stored in the sender_transmission_id field as an alphanumeric value.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  
+</xsd:schema>
