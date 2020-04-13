@@ -14,10 +14,10 @@ public class OTMService {
 	
 	private FrOTMDAO otmDAO;
 	
-    public TransmissionAck inserir(String xml){
+    public TransmissionAck inserir(String xml,String tipo){
     	Util.transmissionXML = xml;
     	otmDAO = DBConnection.createOTMDAO();
-        return otmDAO.inserirXML(xml);
+        return otmDAO.inserirXML(xml,tipo);
     }
 
 }
