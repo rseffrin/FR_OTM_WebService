@@ -6,5 +6,5 @@ import br.com.frimesa.ws.dao.IGenericDAO;
 import br.com.frimesa.ws.domain.TransmissionAck;
 
 public interface FrOTMDAO extends IGenericDAO, Serializable{
-	public TransmissionAck inserirXML(String xml);
+	public TransmissionAck inserirXML(String xml,String tipo);
 }
