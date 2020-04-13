@@ -21,7 +21,7 @@ public class OTMResource {
 	
 	@PostConstruct
 	private void init() {
-		Util.LOG = true;
+		Util.LOG = false;
 	}
 	
 	
@@ -29,10 +29,31 @@ public class OTMResource {
 	@Path("/pagamento")
 	@Consumes(MediaType.TEXT_XML)
 	@Produces("application/xml")
-    public Response inserirIntegrationOTM(String xml)  {
-		System.out.println("teste 3");
+    public Response inserirPagamentoOTM(String xml)  {
 		return Response.status(Status.OK)				
-				.entity(service.inserir(xml))
+				.entity(service.inserir(xml, Util.VOUCHER_ALLOCATION))
+				.type(MediaType.APPLICATION_XML)
+				.build();
+    }
+	
+	@POST
+	@Path("/plannedShipment")
+	@Consumes(MediaType.TEXT_XML)
+	@Produces("application/xml")
+    public Response inserirPlannedShipmentOTM(String xml)  {
+		return Response.status(Status.OK)				
+				.entity(service.inserir(xml, Util.PLANNED_SHIPMENT))
+				.type(MediaType.APPLICATION_XML)
+				.build();
+    }
+	
+	@POST
+	@Path("/custoTransferencia")
+	@Consumes(MediaType.TEXT_XML)
+	@Produces("application/xml")
+    public Response inserirCustoTransferenciaOTM(String xml)  {
+		return Response.status(Status.OK)				
+				.entity(service.inserir(xml, Util.CUSTO_TRANSFERENCIA))
 				.type(MediaType.APPLICATION_XML)
 				.build();
     }
