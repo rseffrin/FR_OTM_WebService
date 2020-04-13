@@ -26,6 +26,12 @@ public class Util {
 	public static final String SUCESSO = "PROCESSED";
 	
 	public static final String ERROR = "ERROR";
+    
+	public static final String VOUCHER_ALLOCATION = "VOUCHER_ALLOCATION";
+	
+	public static final String PLANNED_SHIPMENT = "PLANNED_SHIPMENT";
+	
+	public static final String CUSTO_TRANSFERENCIA = "CUSTO_TRANSFERENCIA";
 	
 	public static String transmissionXML;
 	
@@ -38,7 +44,10 @@ public class Util {
 	}
 	
 	public static String getSenderTransmissionNo(Document doc) {
-		String transmission = doc.getElementsByTagName("otm:SenderTransmissionNo").item(0).getFirstChild().getNodeValue();
+		//String transmission = doc.getElementsByTagName("otm:SenderTransmissionNo").item(0).getFirstChild().getNodeValue();
+		String transmission = null;
+		if (doc.getElementsByTagName("SenderTransmissionNo").item(0)!=null)
+			transmission = doc.getElementsByTagName("SenderTransmissionNo").item(0).getFirstChild().getNodeValue();
 		return transmission;
     }
 	
