@@ -22,13 +22,20 @@
     <servlet-name>FrimesaREST</servlet-name>
     <url-pattern>/frimesa/*</url-pattern>
   </servlet-mapping> 
+  
+  <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Public Area</web-resource-name>
+            <url-pattern>/frimesa/*</url-pattern>
+        </web-resource-collection>
+   </security-constraint>
 
 	
 	<env-entry>
 		<description>Database Name Default</description>
         <env-entry-name>DATABASE_PADRAO</env-entry-name>
         <env-entry-type>java.lang.String</env-entry-type>
-        <env-entry-value>jdbc/OracleFRAuditDEVEBS</env-entry-value>
+        <env-entry-value>jdbc/OracleFROtm</env-entry-value>
      </env-entry>
   
 </web-app>
